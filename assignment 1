@@ -1,0 +1,113 @@
+ sudo mysql
+[sudo] password for ubuntu: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 22
+Server version: 8.0.29-0ubuntu0.22.04.2 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database Chocolate
+    -> show databases
+    -> create database Chocolate;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases
+create database Chocolate' at line 2
+mysql> create database Chocolate;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ASH                |
+| B                  |
+| Chocolate          |
+| EMPLOYEE           |
+| LIBRARY            |
+| Library            |
+| b2                 |
+| information_schema |
+| madhuri            |
+| mysql              |
+| performance_schema |
+| samiksha           |
+| shopping           |
+| sys                |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> use Chocolate;
+Database changed
+mysql> create table Dairymilk(Dm_id int , Dm_Name varchar(25) , cost int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into Dairymilk values(101 , "Silk" , 50);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Dairymilk;
++-------+---------+------+
+| Dm_id | Dm_Name | cost |
++-------+---------+------+
+|   101 | Silk    |   50 |
++-------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> select Dm_name from Dairymilk;
++---------+
+| Dm_name |
++---------+
+| Silk    |
++---------+
+1 row in set (0.00 sec)
+
+mysql> insert into Dairymilk values(102 , "Bubble" , 80);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into Dairymilk values(103 , "Ecliars" , 5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Dairymilk;
++-------+---------+------+
+| Dm_id | Dm_Name | cost |
++-------+---------+------+
+|   101 | Silk    |   50 |
+|   102 | Bubble  |   80 |
+|   103 | Ecliars |    5 |
++-------+---------+------+
+3 rows in set (0.00 sec)
+
+mysql> insert into Dairymilk(Dm_id , Dm_name) values(104, "Shots");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from Dairymilk;
++-------+---------+------+
+| Dm_id | Dm_Name | cost |
++-------+---------+------+
+|   101 | Silk    |   50 |
+|   102 | Bubble  |   80 |
+|   103 | Ecliars |    5 |
+|   104 | Shots   | NULL |
++-------+---------+------+
+4 rows in set (0.00 sec)
+
+mysql> update Dairymilk set cost=10 where Dm_id=104;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Dairymilk;
++-------+---------+------+
+| Dm_id | Dm_Name | cost |
++-------+---------+------+
+|   101 | Silk    |   50 |
+|   102 | Bubble  |   80 |
+|   103 | Ecliars |    5 |
+|   104 | Shots   |   10 |
++-------+---------+------+
+4 rows in set (0.00 sec)
+
+mysql> 
