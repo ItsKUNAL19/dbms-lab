@@ -1,0 +1,248 @@
+ubuntu@ubuntu-OptiPlex-5000:~$ mysql -u root -p
+Enter password: 
+ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+ubuntu@ubuntu-OptiPlex-5000:~$ mysql -u root -p
+Enter password: 
+ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+ubuntu@ubuntu-OptiPlex-5000:~$ mysql -u root -p
+Enter password: 
+ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+ubuntu@ubuntu-OptiPlex-5000:~$ sudo mysql
+[sudo] password for ubuntu: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.30-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE TABLE `users` (
+    ->   `auid` int(10) UNSIGNED NOT NULL,
+    ->   `username` varchar(100) NOT NULL,
+    ->   `password` varchar(150) NOT NULL,
+    ->   `createdate` datetime NOT NULL,
+    ->   `isActive` tinyint(1) NOT NULL
+    -> );
+ERROR 1046 (3D000): No database selected
+mysql> 
+mysql> 
+mysql> CREATE TABLE `userprofile` (
+    ->   `apid` int(10) UNSIGNED NOT NULL,
+    ->   `auid` int(10) UNSIGNED NOT NULL,
+    ->   `firstname` varchar(50) NOT NULL,
+    ->   `lastname` varchar(50) NOT NULL,
+    ->   `email` varchar(100) NOT NULL,
+    ->   `phone` varchar(45) NOT NULL
+    -> );
+ERROR 1046 (3D000): No database selected
+mysql> show database
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Employee           |
+| NICKS              |
+| Purnandu           |
+| STUDENT            |
+| TEB                |
+| b2                 |
+| books              |
+| comp_dyp           |
+| company            |
+| crypto             |
+| divya              |
+| employee           |
+| employee1          |
+| employee2          |
+| employeepj         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sample             |
+| student            |
+| student1           |
+| studentinfo        |
+| students           |
+| sys                |
+| task               |
+| tcs                |
+| vaishnav           |
++--------------------+
+27 rows in set (0.00 sec)
+
+mysql> create database user;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| Employee           |
+| NICKS              |
+| Purnandu           |
+| STUDENT            |
+| TEB                |
+| b2                 |
+| books              |
+| comp_dyp           |
+| company            |
+| crypto             |
+| divya              |
+| employee           |
+| employee1          |
+| employee2          |
+| employeepj         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sample             |
+| student            |
+| student1           |
+| studentinfo        |
+| students           |
+| sys                |
+| task               |
+| tcs                |
+| user               |
+| vaishnav           |
++--------------------+
+28 rows in set (0.00 sec)
+
+mysql> use user;
+Database changed
+mysql> CREATE TABLE `users` (
+    ->   `auid` int(10) UNSIGNED NOT NULL,
+    ->   `username` varchar(100) NOT NULL,
+    ->   `password` varchar(150) NOT NULL,
+    ->   `createdate` datetime NOT NULL,
+    ->   `isActive` tinyint(1) NOT NULL
+    -> );
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+mysql> 
+mysql> 
+mysql> CREATE TABLE `userprofile` (
+    ->   `apid` int(10) UNSIGNED NOT NULL,
+    ->   `auid` int(10) UNSIGNED NOT NULL,
+    ->   `firstname` varchar(50) NOT NULL,
+    ->   `lastname` varchar(50) NOT NULL,
+    ->   `email` varchar(100) NOT NULL,
+    ->   `phone` varchar(45) NOT NULL
+    -> );
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+mysql> Insert into users
+    -> (auid, username,password, createdate, isActive)
+    -> values
+    -> (1,'admin','pswrd123', curdate(), 1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Insert into userprofile
+    -> (apid, auid, firstname, lastname, email, phone)
+    -> values
+    -> (1,1,'Jack', 'Wolf', 'bettestroom@gmail.com','600075764216');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> Insert into users
+    -> (auid,username,password, createdate, isActive)
+    -> values
+    -> (2, 'admin1','pass506', curdate(), 1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Insert into userprofile
+    -> (apid, auid, firstname, lastname, email, phone)
+    -> values
+    -> (2, 3, 'Tom', 'Collins', 'tnkc@outlook.com','878511311054');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Insert into users
+    -> (auid, username,password, createdate, isActive)
+    -> values
+    -> (4,'fox12','45@jgo0', curdate(), 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> Insert into userprofile
+    -> (apid, auid, firstname, lastname, email, phone)
+    -> values
+    -> (4,5,'Bill', 'Fonskin', 'bill_1290@gmail.com','450985764216');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Insert into users
+    -> (auid,username,password, createdate, isActive)
+    -> values
+    -> (6, 'lexus1267','98hnfRT6', curdate(), 1);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> Insert into userprofile
+    -> (apid, auid, firstname, lastname, email, phone)
+    -> values
+    -> (7, 7, 'Ivan', 'Levchenko', 'ivan_new@outlook.com','878511311054');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from users;
++------+-----------+----------+---------------------+----------+
+| auid | username  | password | createdate          | isActive |
++------+-----------+----------+---------------------+----------+
+|    1 | admin     | pswrd123 | 2022-08-22 00:00:00 |        1 |
+|    2 | admin1    | pass506  | 2022-08-22 00:00:00 |        1 |
+|    4 | fox12     | 45@jgo0  | 2022-08-22 00:00:00 |        1 |
+|    6 | lexus1267 | 98hnfRT6 | 2022-08-22 00:00:00 |        1 |
++------+-----------+----------+---------------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from userprofile;
++------+------+-----------+-----------+-----------------------+--------------+
+| apid | auid | firstname | lastname  | email                 | phone        |
++------+------+-----------+-----------+-----------------------+--------------+
+|    1 |    1 | Jack      | Wolf      | bettestroom@gmail.com | 600075764216 |
+|    2 |    3 | Tom       | Collins   | tnkc@outlook.com      | 878511311054 |
+|    4 |    5 | Bill      | Fonskin   | bill_1290@gmail.com   | 450985764216 |
+|    7 |    7 | Ivan      | Levchenko | ivan_new@outlook.com  | 878511311054 |
++------+------+-----------+-----------+-----------------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT columns
+    -> FROM tableA 
+    -> INNER JOIN tableB
+    -> ON tableA.column = tableB.column;
+ERROR 1146 (42S02): Table 'user.tableA' doesn't exist
+mysql> SELECT t1.auid,t1.username,t1.password,t1.isActive,t2.apid,t2.firstname,t2.lastname,t2.email,t2.phone from users AS t1 
+    -> INNER JOIN userprofiles AS t2 ON t1.auid = t2.auid;
+ERROR 1146 (42S02): Table 'user.userprofiles' doesn't exist
+mysql> SELECT columns FROM tableA  INNER JOIN tableB ON tableA.column = tableB.column;
+ERROR 1146 (42S02): Table 'user.tableA' doesn't exist
+mysql> INNER JOIN userprofile AS t2 ON t1.auid = t2.auid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INNER JOIN userprofile AS t2 ON t1.auid = t2.auid' at line 1
+mysql> SELECT t1.auid,t1.username,t1.pasword,t1.isActive,t2.apid,t2.firstname,t2.lastname,t2.email,t2.phone FROM users AS t1 INNER JOIN userprofile AS t2 ON t1.auid = t2.auid;
+ERROR 1054 (42S22): Unknown column 't1.pasword' in 'field list'
+mysql> SELECT t1.auid,t1.username,t1.password,t1.isActive,t2.apid,t2.firstname,t2.lastname,t2.email,t2.phone FROM users AS t1 INNER JOIN userprofile AS t2 ON t1.auid = t2.auid;
++------+----------+----------+----------+------+-----------+----------+-----------------------+--------------+
+| auid | username | password | isActive | apid | firstname | lastname | email                 | phone        |
++------+----------+----------+----------+------+-----------+----------+-----------------------+--------------+
+|    1 | admin    | pswrd123 |        1 |    1 | Jack      | Wolf     | bettestroom@gmail.com | 600075764216 |
++------+----------+----------+----------+------+-----------+----------+-----------------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT t1.auid,t1.username,t1.pasword,t1.isActive,t2.apid,t2.firstname,t2.lastname,t2.email,t2.phone FROM users AS t1 LEFT JOIN userprofile AS t2 ON t1.a
+uid = t2.auid;
+ERROR 1054 (42S22): Unknown column 't1.pasword' in 'field list'
+mysql> SELECT t1.auid,t1.username,t1.password,t1.isActive,t2.apid,t2.firstname,t2.lastname,t2.email,t2.phone FROM users AS t1 LEFT JOIN userprofile AS t2 ON t1.auid = t2.auid;
++------+-----------+----------+----------+------+-----------+----------+-----------------------+--------------+
+| auid | username  | password | isActive | apid | firstname | lastname | email                 | phone        |
++------+-----------+----------+----------+------+-----------+----------+-----------------------+--------------+
+|    1 | admin     | pswrd123 |        1 |    1 | Jack      | Wolf     | bettestroom@gmail.com | 600075764216 |
+|    2 | admin1    | pass506  |        1 | NULL | NULL      | NULL     | NULL                  | NULL         |
+|    4 | fox12     | 45@jgo0  |        1 | NULL | NULL      | NULL     | NULL                  | NULL         |
+|    6 | lexus1267 | 98hnfRT6 |        1 | NULL | NULL      | NULL     | NULL                  | NULL         |
++------+-----------+----------+----------+------+-----------+----------+-----------------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> 
+
