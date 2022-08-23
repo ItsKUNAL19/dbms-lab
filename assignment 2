@@ -284,3 +284,38 @@ mysql> SELECT * FROM users u CROSS JOIN userprofile u1;
 mysql> 
 
 
+
+mysql> CREATE VIEW usersView AS SELECT username , password FROM users WHERE auid <8;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM usersView;
++-----------+----------+
+| username  | password |
++-----------+----------+
+| admin     | pswrd123 |
+| admin1    | pass506  |
+| fox12     | 45@jgo0  |
+| lexus1267 | 98hnfRT6 |
++-----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE VIEW userprofileView AS SELECT users.username , users.password , userprofile.firstname , userprofile.lastname FROM users, userprofile WHERE users.auid = userprofile.apid;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM userprofileView;
++----------+----------+-----------+----------+
+| username | password | firstname | lastname |
++----------+----------+-----------+----------+
+| admin    | pswrd123 | Jack      | Wolf     |
+| admin1   | pass506  | Tom       | Collins  |
+| fox12    | 45@jgo0  | Bill      | Fonskin  |
++----------+----------+-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> DROP VIEW userprofileView;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM userprofileView;
+ERROR 1146 (42S02): Table 'user.userprofileView' doesn't exist
+mysql> 
+
